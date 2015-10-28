@@ -1,6 +1,6 @@
 var todoData = [
-  {id: 1, content: 'show up', completed: false },
-  {id: 2, content: 'something up', completed: true }
+  {id: 0, content: 'show up', completed: false },
+  {id: 1, content: 'something up', completed: false }
 ]
 
 
@@ -34,6 +34,11 @@ var todoPage = {
       $(this).find('i').toggleClass('fa fa-square-o fa fa-check-square-o');
       $(this).find('li').addClass('complete');
       $(this).toggleClass('complete');
+      if ($(this).attr('data-completed') === 'true') {
+        $(this).attr('data-completed', false);
+      } else {
+        $(this).attr('data-completed', true);
+      };
     });
 
 // Thanks for the help Daniel Cook on stack exchange
@@ -59,29 +64,47 @@ var todoPage = {
 
     $('.all').on('click', function(event){
       event.preventDefault();
-      $('.todoClick').append('.todoClick');
+      $.each($('.formstuff li'), function(idx, el) {
+      $(el).css('display', 'block');
       console.log('lay');
-    });
+    })
+  });
 
     $('.active').on('click', function(event){
       event.preventDefault();
-      if($('.formstuff','li').hasClass('complete')){
-        $('.formstuff','li').css('display', 'none');
-      } else{
-        $('.formstuff','li').css('display', 'block');
-      }
-      console.log('nay');
+      $.each($('.formstuff li'), function(idx, el) {
+        console.log($(el).attr('data-completed') === 'true')
+        console.log($(el));
+        if($(el).attr('data-completed') === 'true'){
+          $(el).css('display', 'none');
+        } else{
+          $(el).css('display', 'block');
+        }
+        console.log('nay');
+      })
     });
 
     $('.done').on('click', function(event){
       event.preventDefault();
-      if($('.formstuff','li').hasClass('complete')) {
-        $('.formstuff','li').css('display', 'block');
+      $.each($('.formstuff li'), function(idx, el) {
+      if($(el).attr('data-completed') === 'true') {
+        $(el).css('display', 'block');
       } else {
-          $('.formstuff','li').css('display', 'none');
+          $(el).css('display', 'none');
       }
       console.log('yay');
-    });
+    })
+  });
+
+  $('.clearCompleted').on('click', function(event){
+    event.preventDefault();
+  $.each($('.formstuff li'), function(idx, el) {
+    if($(el).attr('data-completed') === 'true') {
+    console.log(idx);
+    todoPage.deleteLi(idx);
+    }
+  })
+});
 
   },
 
@@ -110,22 +133,23 @@ var todoPage = {
   submit: function(){
     if($('input').val() !== ''){
       var input_value = $('input').val();
-        $('.formstuff ul').append('<li class="todoClick"><i class="fa fa-square-o"></i>' + input_value + '</li>');
-    };
+        var submittableObject = {
+          content: input_value,
+          completed: false
+        }
+        submittableObject.id = todoData.length
+        todoData.push(submittableObject);
+        $('.formstuff ul').append('<li class="todoClick" data-id="' + submittableObject.id +'" data-completed="' + submittableObject.completed + '"><i class="fa fa-square-o"></i>' + input_value + '</li>');
+        $('input').val('');
+      };
 
-    var submittableObject = {
-      content: input_value,
-      completed: false
-    }
-    submittableObject.id = todoData.length
-    todoData.push(submittableObject);
-    $('input').val('');
+
   },
 
   deleteLi: function (idx) {
 
     todoData.splice(idx,1);
-    $('.formstuff').html('');
+    $('.formstuff li').html('');
     todoPage.loadTodo(todoData);
   },
 
