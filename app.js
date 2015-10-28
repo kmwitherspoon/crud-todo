@@ -57,13 +57,13 @@ var todoPage = {
         todoPage.deleteLi(liId);
       });
 
-    $('.bottom').on('click', '.all', function(event){
+    $('.all').on('click', function(event){
       event.preventDefault();
       $('.todoClick').append('.todoClick');
       console.log('lay');
     });
 
-    $('.bottom').on('click', '.active', function(event){
+    $('.active').on('click', function(event){
       event.preventDefault();
       if($('.formstuff','li').hasClass('complete')){
         $('.formstuff','li').css('display', 'none');
@@ -73,7 +73,7 @@ var todoPage = {
       console.log('nay');
     });
 
-    $('.bottom').on('click', '.done', function(event){
+    $('.done').on('click', function(event){
       event.preventDefault();
       if($('.formstuff','li').hasClass('complete')) {
         $('.formstuff','li').css('display', 'block');
