@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="styles.css" media="screen" title="no title" charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script type="text/html" id="allTmpl">
+      <li data-id="<%= id %>" data-completed="<%= completed %>"><i class="fa fa-square-o"></i><%= content %></li>
+
+    </script>
+  </head>
+  <body>
+  <section class="todo">
+    <h1>ToDo</h1>
+    <div class="container">
+      <div class="formstuff">
+
+        <form class="" action="index.html" method="post">
+          <input type="text" name="title" placeholder="New todo">
+        </form>
+        <ul class="list-items">
+
+        </ul>
+      </div>
+      <div class="bottom-list">
+        <ul class="bottom">
+          <li class="itemsLeft"></li>
+          <li class="all"><a href="#">All</a></li>
+          <li class="active"><a href="#">Active</a></li>
+          <li class="done"><a href="#">Completed</a></li>
+          <li class="clearCompleted"><a href="#">Clear completed</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+    <script src="bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
+    <script src="bower_components/underscore/underscore.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
+  </body>
+</html>

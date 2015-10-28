@@ -1,0 +1,55 @@
+body {
+  color: #87CAD6;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poiret One', cursive;
+  width: 980px; }
+
+.todo {
+  background-color: #EAEBEA;
+  width: 500px;
+  height: 300px;
+  margin: 10% 40%; }
+  .todo h1 {
+    text-align: center;
+    font-size: 40px; }
+
+form {
+  padding-left: 10px; }
+
+.todoContent {
+  background-color: white;
+  width: 300px;
+  padding-top: 20px;
+  margin-left: 100px; }
+
+i {
+  padding-right: 5px; }
+
+input {
+  width: 299px;
+  height: 20px; }
+
+.bottom li {
+  display: inline-block;
+  margin-left: 20px; }
+  .bottom li a {
+    text-decoration: none;
+    color: #87CAD6; }
+
+.formstuff {
+  color: black; }
+
+.list-items {
+  list-style: none; }
+  .list-items a {
+    margin-left: 20px;
+    color: black;
+    text-decoration: none;
+    font-weight: bold; }
+
+.bottom-list {
+  display: inline-block;
+  margin: 0;
+  padding-top: 10%;
+  width: 100%; }
